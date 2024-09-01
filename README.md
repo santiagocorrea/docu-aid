@@ -20,6 +20,44 @@ The POC should be able to handle the following example questions using AWS docum
 - How to check if an endpoint is KMS encrypted?
 - What are SageMaker Geospatial capabilities?
 
+## Installation
+
+### Prerequisites
+- Python 3.12 and an environment with access to GPU
+- uv (An extremely fast Python package and project manager, written in Rust)
+- A valid OpenAI API Key
+
+### Steps
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/santiagocorrea/docu-aid.git
+    cd your-repo
+    ```
+2. **Install uv and python with the official standalone instaler**:
+    ```bash
+    curl -LsSf https://astral.sh/uv/install.sh | sh 
+    source $HOME/.cargo/env zsh 
+    uv python install 3.12
+    ```
+
+2. **Create and activate a virtual environment**:
+    ```bash
+    uv venv # this will create a .venv directory with the installed python distribution
+    ```
+
+3. **Install dependencies from the pyproject.toml file**:
+    ```bash
+    uv sync
+    ```
+
+4. **Run the system**:
+    ```bash
+    uv run streamlit run src/docu_aid/app.py
+    ```
+
+5. **Access the application**:
+    Open your browser and go to `http://localhost:8501`
+
 ## System Design
 
 ### Architecture
@@ -99,44 +137,6 @@ The system is designed with the following core components:
     - For creating QueryEngines from indices
     - For converting QueryEngines to QueryTools for agent use
 
-## Installation
-
-### Prerequisites
-- Python 3.12 and an environment with access to GPU
-- uv (An extremely fast Python package and project manager, written in Rust)
-- A valid OpenAI API Key
-
-### Steps
-1. **Clone the repository**:
-    ```bash
-    git clone https://github.com/yourusername/your-repo.git
-    cd your-repo
-    ```
-2. **Install uv and python with the official standalone instaler**:
-    ```bash
-    curl -LsSf https://astral.sh/uv/install.sh | sh 
-    source $HOME/.cargo/env zsh 
-    uv python install 3.12
-    ```
-
-2. **Create and activate a virtual environment**:
-    ```bash
-    uv venv # this will create a .venv directory with the installed python distribution
-    ```
-
-3. **Install dependencies from the pyproject.toml file**:
-    ```bash
-    uv sync
-    ```
-
-4. **Run the system**:
-    ```bash
-    uv run streamlit run src/docu_aid/app.py
-    ```
-
-5. **Access the application**:
-    Open your browser and go to `http://localhost:8501`
-
 ## Reproducibility
 
 ### Dataset
@@ -147,8 +147,17 @@ The POC uses publicly available AWS documentation. The dataset can be updated or
    - You can add more documents to the `data/` directory. When the POC is executed (`uv run streamlit run src/docu_aid/app.py`), the knowledge base (vector store) is recreated if the document doesn't exist otherwise it uses the persisted version at `vector_index`.
 
 2. **Testing**:
-   - The following screenshots shows the execution of the POC usiung the example outputs:
+   - The following screenshots shows the execution of the POC using the example outputs:
+   ![alt text](figs/multi-agent-openai-validation.png)
+   ![alt text](figs/multi-agent-app-initialization.png)
+   ![alt text](figs/multi-agent-setup-successful.png)
+   ![alt text](figs/multi-agent-question1.png)
+   ![alt text](figs/multi-agent-question2.png)
+   ![alt text](figs/multi-agent-question3.png)
+   ![alt text](figs/multi-agent-question4.png)
    
+   The following fillustrates the logs from the agents during the execution of the agentic RAG:
+   ![alt text](figs/multi-agent-setup-successful.png)
    - Additional test cases can be added to cover more documentation scenarios.
 
 3. **Deployment**:
