@@ -157,7 +157,7 @@ The POC uses publicly available AWS documentation. The dataset can be updated or
    ![alt text](figs/multi-agent-question4.png)
    
    The following fillustrates the logs from the agents during the execution of the agentic RAG:
-   ![alt text](figs/multi-agent-setup-successful.png)
+   ![alt text](figs/multi-agent-logs-reasoning.png)
    - Additional test cases can be added to cover more documentation scenarios.
 
 3. **Deployment**:
