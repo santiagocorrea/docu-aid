@@ -61,7 +61,7 @@ The POC should be able to handle the following example questions using AWS docum
 ## System Design
 
 ### Architecture
-This POC uses an Agentic RAG (Retrieval Augmented Generation) approach based on Multi-Document Agent. This approach allow us to answer different types of questions across the AWS documentations such as QA comparing different docs, Summaries over a specific doc, and comparing summaries between different docs by setting up a "document agent" over each Document (each doc agent can do QA/summarization within its doc) and setup a top-level agent over this set of document agents to orchestrate and syntethize the outputs from the document agents. The figure below illustrates the architecture diagram:
+This POC uses an Agentic RAG (Retrieval Augmented Generation) approach based on Multi-Document Agent. This approach allow us to answer different types of questions across the AWS documentations such as QA comparing different docs, Summaries over a specific doc, and comparing summaries between different docs by setting up a "document agent" over each Document (each doc agent can do QA/summarization within its doc) and setup a top-level agent over this set of document agents to orchestrate and syntethize the outputs from the document agents. The architecture is inspired in the [MetaGPT](https://arxiv.org/pdf/2308.00352) paper and the multi-agent module from LlamaIndex. The figure below illustrates the architecture diagram:
 ![alt text](multi-agent-architecture.png)
 
 The system is designed with the following core components:
