@@ -173,5 +173,5 @@ The POC uses publicly available AWS documentation. The dataset can be updated or
 
 
 ## Contact
-For questions or support, please contact Santiago Correa at [santiago.correa.cardona@gmail.com].
+For questions or support, please contact Santiago Correa at [santiagocorrea.github.io].
 
