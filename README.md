@@ -3,7 +3,7 @@
 ## Overview
 
 ### Scenario
-Company X has a significant amount of documentation that their developers must navigate. Developers often spend too much time searching for information or asking coworkers simple questions already covered in the documentation. This situation disrupts experienced developers and can lead to the dissemination of outdated information.
+A company has a significant amount of documentation that their developers must navigate. Developers often spend too much time searching for information or asking coworkers simple questions already covered in the documentation. This situation disrupts experienced developers and can lead to the dissemination of outdated information.
 
 To address this, Company X needs to create a tool aimed at reducing the time developers spend searching through documentation. The Proof of Concept (POC) focuses on a subset of their data, primarily using AWS documentation, and is designed to assist developers with unfamiliar parts of the documentation, minimizing the need for coworker interruptions. The POC is targeted at one of the development teams.
 
