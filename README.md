@@ -3,13 +3,13 @@
 ## Overview
 
 ### Scenario
-A company has a significant amount of documentation that their developers must navigate. Developers often spend too much time searching for information or asking coworkers simple questions already covered in the documentation. This situation disrupts experienced developers and can lead to the dissemination of outdated information.
+A company has a significant amount of documentation that its developers must navigate. Developers often spend too much time searching for information or asking coworkers simple questions already covered in the documentation. This situation disrupts experienced developers and can lead to the dissemination of outdated information.
 
-To address this, Company X needs to create a tool aimed at reducing the time developers spend searching through documentation. The Proof of Concept (POC) focuses on a subset of their data, primarily using AWS documentation, and is designed to assist developers with unfamiliar parts of the documentation, minimizing the need for coworker interruptions. The POC is targeted at one of the development teams.
+To address this, the company needs to create a tool to reduce the time developers spend searching through documentation. The Proof of Concept (POC) focuses on a subset of their data, primarily using AWS documentation, and is designed to assist developers with unfamiliar parts of the documentation, minimizing the need for coworker interruptions. The POC is targeted at one of the development teams.
 
 ### Goals
 The main goals of this POC are:
-- To demonstrate that the system can significantly reduce the time developers spend searching for documentation.
+- To demonstrate that the system can significantly reduce developers' time searching for documentation.
 - To create a system that provides up-to-date, accurate information, reducing the dependency on other team members.
 - To test the feasibility of pointing users to further reading and relevant documents.
 
@@ -24,7 +24,7 @@ The POC should be able to handle the following example questions using AWS docum
 
 ### Prerequisites
 - Python 3.12 and an environment with access to GPU
-- uv (An extremely fast Python package and project manager, written in Rust)
+- uv (An extremely fast Python package and project manager written in Rust)
 - A valid OpenAI API Key
 
 ### Steps
@@ -33,7 +33,7 @@ The POC should be able to handle the following example questions using AWS docum
     git clone https://github.com/santiagocorrea/docu-aid.git
     cd your-repo
     ```
-2. **Install uv and python with the official standalone instaler**:
+2. **Install uv and Python with the official standalone installer**:
     ```bash
     curl -LsSf https://astral.sh/uv/install.sh | sh 
     source $HOME/.cargo/env zsh 
@@ -42,7 +42,7 @@ The POC should be able to handle the following example questions using AWS docum
 
 2. **Create and activate a virtual environment**:
     ```bash
-    uv venv # this will create a .venv directory with the installed python distribution
+    uv venv # this will create a .venv directory with the installed Python distribution
     ```
 
 3. **Install dependencies from the pyproject.toml file**:
@@ -61,7 +61,7 @@ The POC should be able to handle the following example questions using AWS docum
 ## System Design
 
 ### Architecture
-This POC uses an Agentic RAG (Retrieval Augmented Generation) approach based on Multi-Document Agent. This approach allow us to answer different types of questions across the AWS documentations such as QA comparing different docs, Summaries over a specific doc, and comparing summaries between different docs by setting up a "document agent" over each Document (each doc agent can do QA/summarization within its doc) and setup a top-level agent over this set of document agents to orchestrate and syntethize the outputs from the document agents. The architecture is inspired in the [MetaGPT](https://arxiv.org/pdf/2308.00352) paper and the multi-agent module from LlamaIndex. The figure below illustrates the architecture diagram:
+This POC uses an Agentic RAG (Retrieval Augmented Generation) approach based on a Multi-Document Agent. This approach allows us to answer different types of questions across the AWS documentations, such as QA comparing different docs, Summaries over a specific doc, and comparing summaries between different docs by setting up a "document agent" over each Document (each doc agent can do QA/summarization within its doc) and set up a top-level agent over this set of document agents to orchestrate and synthesize the outputs from the document agents. The architecture is inspired by the [MetaGPT](https://arxiv.org/pdf/2308.00352) paper and the multi-agent module from LlamaIndex. The figure below illustrates the architecture diagram:
 ![alt text](multi-agent-architecture.png)
 
 The system is designed with the following core components:
@@ -101,9 +101,9 @@ The system is designed with the following core components:
    - Modular design allows for easy scaling and integration of new document sources.
    - Efficient use of computational resources by selective activation of relevant document agents.
    - Combines the broad knowledge of GPT-4 with the specific, up-to-date information from ingested documents.
-   - Flexible architecture capable of handling both general queries and specific, documentation-based questions.
+   - Flexible architecture capable of handling general queries and specific, documentation-based questions.
 
-6. **Security Considerations**: While the POC uses public documentation, the final MVP system will include mechanisms to ensure sensitive internal documentation is handled according to proprietary and geographical restrictions.
+6. **Security Considerations**: While the POC uses public documentation, the final MVP system will include mechanisms to handle sensitive internal documentation according to proprietary and geographical restrictions.
 
 ### Technology Stack
 
@@ -130,7 +130,7 @@ The system is designed with the following core components:
 
 - **Natural Language Processing and Generation**: 
   - OpenAI GPT-3.5 Turbo (for document-specific agents)
-  - OpenAI GPT-4 (for top-level agent, intent understanding, and response synthesis)
+  - OpenAI GPT-4 (for the top-level agent, intent understanding, and response synthesis)
 
 - **Query Engine and Tool Creation**:
   - LlamaIndex
@@ -140,7 +140,7 @@ The system is designed with the following core components:
 ## Reproducibility
 
 ### Dataset
-The POC uses publicly available AWS documentation. The dataset can be updated or extended as needed to include more documentation or internal company-specific data.
+The POC uses publicly available AWS documentation. The dataset can be updated or extended to include more documentation or internal company-specific data.
 
 ### Steps to Reproduce
 1. **Document Ingestion**:
@@ -156,7 +156,7 @@ The POC uses publicly available AWS documentation. The dataset can be updated or
    ![alt text](figs/multi-agent-question3.png)
    ![alt text](figs/multi-agent-question4.png)
    
-   The following fillustrates the logs from the agents during the execution of the agentic RAG:
+   The following illustrates the logs from the agents during the execution of the agentic RAG:
    ![alt text](figs/multi-agent-logs-reasoning.png)
    - Additional test cases can be added to cover more documentation scenarios.
 
